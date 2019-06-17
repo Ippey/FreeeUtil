@@ -1,0 +1,22 @@
+{
+    "name": "ippei/freee-util",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ippei Sumida",
+            "email": "ippey.s@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ippey\\FreeeUtil\\": "src/"
+        }
+    }
+}
