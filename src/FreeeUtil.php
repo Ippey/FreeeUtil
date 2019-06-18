@@ -4,8 +4,36 @@
 namespace Ippey\FreeeUtil;
 
 
+use GuzzleHttp\Client;
+
 class FreeeUtil
 {
+    private $apiResolver;
+    private $list = [
+        Account::class,
+    ];
+
+    public function __construct()
+    {
+        $this->apiResolver = new FreeeApiResolver();
+        foreach ($this->list as $className) {
+            $this->apiResolver->add($className);
+        }
+    }
+
+    /**
+     * @param string $key
+     * @param string|null $accessToken
+     * @return FreeeApiInterface
+     */
+    public function getApi($key, $accessToken = null)
+    {
+        $className = $this->apiResolver->resolve($key);
+        $client = new Client();
+        $instance = new $className($client, $accessToken);
+        return $instance;
+    }
+
     /**
      * 認可コード取得用URL取得
      *
