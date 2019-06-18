@@ -1,14 +1,16 @@
-# Freee Util
-This library is Utility for Freee API.  
-This is alpha version.
+# freee Util
+freee API用ユーティリティです。認証や各APIクライアントを提供します。
 
-## Installation
+## Freee について
+[freee](https://www.freee.co.jp)  
+[freee Developers Community](https://developer.freee.co.jp/)
+## インストール
 ```$xslt
 composer require ippey/freee-util
 ```
 
-## Usage
-### Get Authorization URL
+## 利用方法
+### 認可コード生成URL取得
 ```php
 $clientId = 'some client id';
 $redirectUri = 'https://www.google.co.jp';
