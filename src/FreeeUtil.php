@@ -5,12 +5,14 @@ namespace Ippey\FreeeUtil;
 
 
 use GuzzleHttp\Client;
+use Ippey\FreeeUtil\Accounting\Users;
 
 class FreeeUtil
 {
     private $apiResolver;
     private $list = [
         Account::class,
+        Users::class,
     ];
 
     public function __construct()

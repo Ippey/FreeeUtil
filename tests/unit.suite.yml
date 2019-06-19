@@ -10,3 +10,4 @@ modules:
     step_decorators: ~
 env:
     freee:
+    accounting:
