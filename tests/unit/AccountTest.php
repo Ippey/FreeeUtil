@@ -73,4 +73,24 @@ class AccountTest extends Unit
         $this->expectException(FreeeUtilException::class);
         $api->refresh('hoge', 'hoge', 'hoge', 'hoge');
     }
+
+    /**
+     * @env freee
+     * @throws FreeeUtilException
+     */
+    public function testAuthorization()
+    {
+        $httpClient = new Client();
+        $api = new Account($httpClient);
+        $clientId = getenv('FREEE_CLIENT_ID');
+        $clientSecret = getenv('FREEE_CLIENT_SECRET');
+        $code = getenv('FREEE_AUTH_CODE');
+        $redirectUri = getenv('FREEE_REDIRECT_URI');
+
+        $response = $api->token($clientId, $clientSecret, $code, $redirectUri);
+        codecept_debug($response);
+        $refreshToken = $response->refresh_token;
+        $response = $api->refresh($clientId, $clientSecret, $refreshToken, $redirectUri);
+        codecept_debug($response);
+    }
 }

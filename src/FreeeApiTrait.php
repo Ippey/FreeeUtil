@@ -60,11 +60,18 @@ trait FreeeApiTrait
         $headers += [
             'Content-Type' => 'application/json',
         ];
-        $headers['Authorization'] = $this->getAuthorizationHeaderValue();
+        $authorizationValue = $this->getAuthorizationHeaderValue();
+        if (!empty($authorizationValue)) {
+            $headers['Authorization'] = $this->getAuthorizationHeaderValue();
+        }
         $options = [
-            'json' => $data,
             'headers' => $headers,
         ];
+        if ($headers['Content-Type'] == 'application/json') {
+            $options['json'] = $data;
+        } else {
+            $options['form_params'] = $data;
+        }
         try {
             $response = $this->httpClient->post($uri, $options);
             if ($response->getStatusCode() >= 400) {
@@ -78,6 +85,9 @@ trait FreeeApiTrait
 
     protected function getAuthorizationHeaderValue()
     {
+        if (empty($this->accessToken)) {
+            return '';
+        }
         $value = 'Bearer ' . $this->accessToken;
         return $value;
     }

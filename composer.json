@@ -8,7 +8,8 @@
   },
   "require-dev": {
     "codeception/codeception": "^3.0",
-    "phpstan/phpstan": "^0.11.8"
+    "phpstan/phpstan": "^0.11.8",
+    "vlucas/phpdotenv": "^3.4"
   },
   "license": "MIT",
   "authors": [

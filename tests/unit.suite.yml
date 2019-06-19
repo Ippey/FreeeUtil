@@ -7,4 +7,6 @@ modules:
     enabled:
         - Asserts
         - \Helper\Unit
-    step_decorators: ~        
+    step_decorators: ~
+env:
+    freee:

@@ -26,7 +26,7 @@ class Account implements FreeeApiInterface
             'client_secret' => $clientSecret,
             'code' => $code,
             'redirect_uri' => $redirectUri,
-            'grant_type' => 'code',
+            'grant_type' => 'authorization_code',
         ];
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
