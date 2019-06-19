@@ -1,10 +1,11 @@
 <?php namespace Accounting;
 
+use Codeception\Test\Unit;
 use Ippey\FreeeUtil\Accounting\Users;
 use Ippey\FreeeUtil\FreeeUtil;
 use Ippey\FreeeUtil\FreeeUtilException;
 
-class UsersTest extends \Codeception\Test\Unit
+class UsersTest extends Unit
 {
     /**
      * @var \UnitTester

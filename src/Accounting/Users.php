@@ -6,6 +6,7 @@ namespace Ippey\FreeeUtil\Accounting;
 
 use Ippey\FreeeUtil\FreeeApiInterface;
 use Ippey\FreeeUtil\FreeeApiTrait;
+use Ippey\FreeeUtil\FreeeUtilException;
 
 class Users implements FreeeApiInterface
 {
@@ -17,7 +18,7 @@ class Users implements FreeeApiInterface
     /**
      * @param bool $companies
      * @return mixed
-     * @throws \Ippey\FreeeUtil\FreeeUtilException
+     * @throws FreeeUtilException
      */
     public function me($companies = true)
     {
@@ -31,7 +32,7 @@ class Users implements FreeeApiInterface
     /**
      * @param $companyId
      * @return mixed
-     * @throws \Ippey\FreeeUtil\FreeeUtilException
+     * @throws FreeeUtilException
      */
     public function capabilities($companyId)
     {
