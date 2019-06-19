@@ -10,7 +10,8 @@ composer require ippey/freee-util
 ```
 
 ## 利用方法
-### 認可コード生成URL取得
+### 認証
+#### 認可コード生成URL取得
 ```php
 $clientId = 'some client id';
 $redirectUri = 'https://www.google.co.jp';
@@ -23,7 +24,7 @@ $url = Ippey\FreeeUtil\FreeeUtil::getAuthorizationUri(
 header('Location:' . $url);
 ```
 
-### アクセストークン取得
+#### アクセストークン取得
 ```php
 $clientId = 'some client id';
 $clientSecret = 'some client secret';
@@ -37,7 +38,7 @@ print_r($json->access_token);
 print_r($json->refresh_token);
 ```
 
-### アクセストークン取得
+#### アクセストークン取得
 ```php
 $clientId = 'some client id';
 $clientSecret = 'some client secret';
@@ -49,4 +50,25 @@ $api = $util->getApi('account');
 $json = $api->refresh($clientId, $clientSecret, $refreshToken, $redirectUri);
 print_r($json->access_token); // 再生成されています
 print_r($json->refresh_token); // 再生成されています
+```
+
+### ユーザ
+#### ログインユーザ情報取得
+```php
+$accessToken = 'some access token';
+$companies = true;
+$util = new Ippey\FreeeUtil\FreeeUtil();
+$api = $util->getApi('accounting/users');
+$json = $api->me($companies);
+print_r($json->user);
+```
+
+#### ログインユーザ権限情報取得
+```php
+$accessToken = 'some access token';
+$companyId = 12345;
+$util = new Ippey\FreeeUtil\FreeeUtil();
+$api = $util->getApi('accounting/users');
+$json = $api->capabilities($companyId);
+print_r($json);
 ```
