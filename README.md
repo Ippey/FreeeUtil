@@ -80,7 +80,7 @@ $accessToken = 'some access token';
 $companies = true;
 $api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
 $request = new Ippey\FreeeUtil\Request\Account\User\MeRequest();
-$request->setParameter('companies', true);
+$request->setParameter('companies', $companies);
 $request->setAccessToken($accessToken);
 $response = $api->sendRequest($request);
 print_r($response->getBody());
@@ -93,7 +93,7 @@ $companyId = 12345;
 $api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
 $request = new Ippey\FreeeUtil\Request\Account\User\CapabilitiesRequest();
 $request->setAccessToken($accessToken);
-$request->setParameter('company_id', 742346);
+$request->setParameter('company_id', $companyId);
 $response = $api->sendRequest($request);
 print_r($response->getBody());
 ```

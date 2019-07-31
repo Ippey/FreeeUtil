@@ -5,7 +5,6 @@ namespace Ippey\FreeeUtil;
 
 
 use GuzzleHttp\Client;
-use Ippey\FreeeUtil\Accounting\Users;
 
 class FreeeUtil
 {
