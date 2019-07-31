@@ -4,6 +4,13 @@
 namespace Ippey\FreeeUtil;
 
 
+use Prophecy\Exception\Doubler\MethodNotFoundException;
+
+/**
+ * Class Account
+ * @package Ippey\FreeeUtil
+ *
+ */
 class Account implements FreeeApiInterface
 {
     use FreeeApiTrait;
@@ -19,7 +26,7 @@ class Account implements FreeeApiInterface
      * @return mixed
      * @throws FreeeUtilException
      */
-    public function token($clientId, $clientSecret, $code, $redirectUri)
+    private function token($clientId, $clientSecret, $code, $redirectUri)
     {
         $data = [
             'client_id' => $clientId,
@@ -43,7 +50,7 @@ class Account implements FreeeApiInterface
      * @return mixed
      * @throws FreeeUtilException
      */
-    public function refresh($clientId, $clientSecret, $refreshToken, $redirectUri)
+    private function refresh($clientId, $clientSecret, $refreshToken, $redirectUri)
     {
         $data = [
             'client_id' => $clientId,
@@ -65,5 +72,25 @@ class Account implements FreeeApiInterface
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @throws FreeeUtilException
+     */
+    public function __call($name, $arguments)
+    {
+        switch ($name) {
+            case 'token':
+                return $this->token($arguments[0], $arguments[1], $arguments[2], $arguments[3]);
+                break;
+            case 'refresh':
+                return $this->refresh($arguments[0], $arguments[1], $arguments[2], $arguments[3]);
+                break;
+            default:
+                throw new MethodNotFoundException('method not found.', self::class, $name);
+        }
     }
 }
