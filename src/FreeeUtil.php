@@ -9,31 +9,14 @@ use Ippey\FreeeUtil\Accounting\Users;
 
 class FreeeUtil
 {
-    private $apiResolver;
-    private $list = [
-        Account::class,
-        Users::class,
-    ];
-
-    public function __construct()
-    {
-        $this->apiResolver = new FreeeApiResolver();
-        foreach ($this->list as $className) {
-            $this->apiResolver->add($className);
-        }
-    }
-
     /**
-     * @param string $key
-     * @param string|null $accessToken
-     * @return FreeeApiInterface
+     * @return ApiClient
      */
-    public function getApi($key, $accessToken = null)
+    public static function getApiClient()
     {
-        $className = $this->apiResolver->resolve($key);
-        $client = new Client();
-        $instance = new $className($client, $accessToken);
-        return $instance;
+        $httpClient = new Client();
+        $apiClient = new ApiClient($httpClient);
+        return $apiClient;
     }
 
     /**
