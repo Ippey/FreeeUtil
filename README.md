@@ -1,5 +1,5 @@
 # freee Util
-freee API用ユーティリティです。認証や各APIクライアントを提供します。
+freee API用ユーティリティです。認証やAPIクライアント、各リクエストオブジェクトを提供します。
 
 [![CircleCI](https://circleci.com/gh/Ippey/FreeeUtil.svg?style=svg)](https://circleci.com/gh/Ippey/FreeeUtil)
 
