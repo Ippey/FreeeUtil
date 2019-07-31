@@ -14,7 +14,7 @@ class MeRequest implements AccountingRequestInterface
 
     private $companies;
 
-    private $paramerterKeys = [
+    private $parameterKeys = [
         'companies',
     ];
 
@@ -32,7 +32,7 @@ class MeRequest implements AccountingRequestInterface
 
     public function getParameterKeys()
     {
-        return $this->paramerterKeys;
+        return $this->parameterKeys;
     }
 
     public function setParameter($key, $value)
