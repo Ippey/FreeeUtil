@@ -45,6 +45,11 @@ class PostRequest implements AccountingRequestInterface
         return 'https://api.freee.co.jp/api/1/account_items';
     }
 
+    public function getItemParameterKeys()
+    {
+        return $this->itemParameterKeys;
+    }
+
     public function setItemParameter($key, $val)
     {
         $this->account_item[$key] = $val;
