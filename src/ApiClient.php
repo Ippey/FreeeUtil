@@ -6,6 +6,7 @@ namespace Ippey\FreeeUtil;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use Ippey\FreeeUtil\Request\RequestInterface;
 use Ippey\FreeeUtil\Response\Response;
 use Ippey\FreeeUtil\Response\ResponseInterface;
@@ -43,6 +44,12 @@ class ApiClient
             }
             $response = new Response($result->getHeaders(), $result->getBody());
             return $response;
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                print_r($e->getRequest());
+                print_r((string)$e->getResponse()->getBody());
+            }
+            throw new FreeeUtilException($e->getMessage());
         } catch (GuzzleException $e) {
             print_r($request->getOptions());
             throw new FreeeUtilException($e->getMessage());

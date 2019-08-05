@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ippey\FreeeUtil\Request\Accounting;
+namespace Ippey\FreeeUtil\Request\Accounting\AccountItems;
 
 
 use Ippey\FreeeUtil\Request\AccountingRequestInterface;
@@ -9,28 +9,24 @@ use Ippey\FreeeUtil\Traits\AccountingRequestTrait;
 use Ippey\FreeeUtil\Traits\GetOptionsTrait;
 use Ippey\FreeeUtil\Traits\RequestHeaderTrait;
 
-class BanksRequest implements AccountingRequestInterface
+class GetRequest implements AccountingRequestInterface
 {
     use RequestHeaderTrait;
     use AccountingRequestTrait;
     use GetOptionsTrait;
 
-    private $offset = 0;
-    private $limit;
-    private $type;
+    private $company_id;
+    private $id;
 
     private $parameterKeys = [
-        'offset',
-        'limit',
-        'type',
+        'company_id',
     ];
 
     private $options = [];
 
     public function getUrl()
     {
-        return 'https://api.freee.co.jp/api/1/banks';
+        return 'https://api.freee.co.jp/api/1/account_items/' . $this->id;
     }
-
 
 }
