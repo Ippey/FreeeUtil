@@ -60,6 +60,55 @@ print_r($response->getBody()->access_token); // 再生成されています
 print_r($response->getBody()->refresh_token); // 再生成されています
 ```
 
+### 勘定科目
+#### 勘定科目一覧取得
+```php
+$accessToken = 'some access token';
+$type = 'bank';
+$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new Ippey\FreeeUtil\Request\Accounting\AccountItemsRequest();
+$request->setAccessToken($accessToken);
+$request->setParameter('company_id', 'some coompany id');
+$response = $api->sendRequest($request);
+print_r($response->getBody());
+```
+
+#### 勘定科目詳細取得
+```php
+$accessToken = 'some access token';
+$type = 'bank';
+$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new Ippey\FreeeUtil\Request\Accounting\AccountItems\GetRequest();
+$request->setAccessToken($accessToken);
+$request->setParameter('company_id', 'some coompany id');
+$request->setParameter('id', 'some id');
+$response = $api->sendRequest($request);
+print_r($response->getBody());
+```
+
+#### 勘定科目追加
+```php
+$accessToken = 'some access token';
+$type = 'bank';
+$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new Ippey\FreeeUtil\Request\Accounting\AccountItems\PostRequest();
+$request->setAccessToken($accessToken);
+$request->setAccessToken($accessToken);
+$request->setParameter('company_id', 'some company id');
+$request->setItemParameter('name', 'なまえ');
+$request->setItemParameter('shortcut', 'SHORTCUT');
+$request->setItemParameter('shortcut_num', '999');
+$request->setItemParameter('tax_name', '課税売上');
+$request->setItemParameter('group_name', 'その他預金');
+$request->setItemParameter('account_category', '現金・預金');
+$request->setItemParameter('corresponding_income_name', '売掛金');
+$request->setItemParameter('corresponding_expense_name', '買掛金');
+$request->setItemParameter('accumulated_dep_account_item_name', '減価償却累計額勘定科目');
+$request->setItemParameter('searchable', 2);
+$response = $api->sendRequest($request);
+print_r($response->getBody());
+```
+
 ### 連携サービス
 #### 連携サービス一覧取得
 ```php
