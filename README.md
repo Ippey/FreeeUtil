@@ -18,7 +18,7 @@ composer require ippey/freee-util
 $clientId = 'some client id';
 $redirectUri = 'https://www.google.co.jp';
 $responseType = 'code'; // default is "code"
-$url = Ippey\FreeeUtil\FreeeUtil::getAuthorizationUri(
+$url = \Ippey\FreeeUtil\FreeeUtil::getAuthorizationUri(
     $clientId,
     $redirecturi,
     $responseType
@@ -32,8 +32,8 @@ $clientId = 'some client id';
 $clientSecret = 'some client secret';
 $code = 'authorization code'; // 認可コード生成URLでアクセスして、取得したコード
 $erdirectUri = 'https://www.google.co.jp';
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Auth\TokenRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Auth\TokenRequest();
 $request->setParameter('client_id', $clientId);
 $request->setParameter('client_secret', $clientSecret);
 $request->setParameetr('code', $code);
@@ -49,8 +49,8 @@ $clientId = 'some client id';
 $clientSecret = 'some client secret';
 $refreshToken = 'some refresh token'; // アクセストークン取得結果内のrefresh_token
 $redirectUri = 'https://www.google.co.jp';
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Auth\RefreshRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Auth\RefreshRequest();
 $request->setParameter('client_id', $clientId);
 $request->setParameter('client_secret', $clientSecret);
 $request->setParameter('refresh_token', $refreshToken);
@@ -65,8 +65,8 @@ print_r($response->getBody()->refresh_token); // 再生成されています
 ```php
 $accessToken = 'some access token';
 $type = 'bank';
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Accounting\AccountItemsRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Accounting\AccountItemsRequest();
 $request->setAccessToken($accessToken);
 $request->setParameter('company_id', 'some coompany id');
 $response = $api->sendRequest($request);
@@ -77,8 +77,8 @@ print_r($response->getBody());
 ```php
 $accessToken = 'some access token';
 $type = 'bank';
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Accounting\AccountItems\GetRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Accounting\AccountItems\GetRequest();
 $request->setAccessToken($accessToken);
 $request->setParameter('company_id', 'some coompany id');
 $request->setParameter('id', 'some id');
@@ -90,8 +90,8 @@ print_r($response->getBody());
 ```php
 $accessToken = 'some access token';
 $type = 'bank';
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Accounting\AccountItems\PostRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Accounting\AccountItems\PostRequest();
 $request->setAccessToken($accessToken);
 $request->setAccessToken($accessToken);
 $request->setParameter('company_id', 'some company id');
@@ -114,8 +114,8 @@ print_r($response->getBody());
 ```php
 $accessToken = 'some access token';
 $type = 'bank';
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Accounting\BanksRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Accounting\BanksRequest();
 $request->setAccessToken($accessToken);
 $request->setParameter('type', 'bank');
 $response = $api->sendRequest($request);
@@ -127,8 +127,8 @@ print_r($response->getBody());
 ```php
 $accessToken = 'some access token';
 $companies = true;
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Account\User\MeRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Account\User\MeRequest();
 $request->setParameter('companies', $companies);
 $request->setAccessToken($accessToken);
 $response = $api->sendRequest($request);
@@ -139,8 +139,8 @@ print_r($response->getBody());
 ```php
 $accessToken = 'some access token';
 $companyId = 12345;
-$api = Ippey\FreeeUtil\FreeeUtil::getApiClinet();
-$request = new Ippey\FreeeUtil\Request\Account\User\CapabilitiesRequest();
+$api = \Ippey\FreeeUtil\FreeeUtil::getApiClinet();
+$request = new \Ippey\FreeeUtil\Request\Account\User\CapabilitiesRequest();
 $request->setAccessToken($accessToken);
 $request->setParameter('company_id', $companyId);
 $response = $api->sendRequest($request);
