@@ -2,6 +2,9 @@
 freee API用ユーティリティです。認証やAPIクライアント、各リクエストオブジェクトを提供します。
 
 [![CircleCI](https://circleci.com/gh/Ippey/FreeeUtil.svg?style=svg)](https://circleci.com/gh/Ippey/FreeeUtil)
+[![Latest Stable Version](https://poser.pugx.org/ippey/freee-util/v/stable)](https://packagist.org/packages/ippey/freee-util)
+[![Latest Unstable Version](https://poser.pugx.org/ippey/freee-util/v/unstable)](https://packagist.org/packages/ippey/freee-util)
+[![License](https://poser.pugx.org/ippey/freee-util/license)](https://packagist.org/packages/ippey/freee-util)
 
 ## Freee について
 [freee](https://www.freee.co.jp)  
