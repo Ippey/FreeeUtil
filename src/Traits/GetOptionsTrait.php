@@ -8,8 +8,8 @@ namespace Ippey\FreeeUtil\Traits;
  * Trait GetOptionsTrait
  * @package Ippey\FreeeUtil\Traits
  *
- * @property $parameterKeys
- * @property $options
+ * @property array $parameterKeys
+ * @property array $options
  */
 trait GetOptionsTrait
 {

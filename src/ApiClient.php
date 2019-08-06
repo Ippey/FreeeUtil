@@ -46,8 +46,10 @@ class ApiClient
             return $response;
         } catch (RequestException $e) {
             if ($e->hasResponse()) {
+                /** @var \GuzzleHttp\Psr7\Response $response */
+                $response = $e->getResponse();
                 print_r($e->getRequest());
-                print_r((string)$e->getResponse()->getBody());
+                print_r((string)$response->getBody());
             }
             throw new FreeeUtilException($e->getMessage());
         } catch (GuzzleException $e) {

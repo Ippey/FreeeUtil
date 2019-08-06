@@ -7,8 +7,8 @@ namespace Ippey\FreeeUtil\Traits;
  * Trait PostJsonOptionsTrait
  * @package Ippey\FreeeUtil\Traits
  *
- * @property $parameterKeys
- * @property $options
+ * @property array $parameterKeys
+ * @property array $options
  */
 trait PostJsonOptionsTrait
 {

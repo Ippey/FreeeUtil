@@ -21,8 +21,8 @@ class FreeeUtil
     /**
      * 認可コード取得用URL取得
      *
-     * @param $clientId
-     * @param $redirectUri
+     * @param string $clientId
+     * @param string $redirectUri
      * @param string $responseType
      * @return string
      */
